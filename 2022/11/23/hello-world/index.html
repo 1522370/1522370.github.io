@@ -436,6 +436,37 @@
 
 
 
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+var gitalk = new Gitalk({
+  clientID: 'c1b2c0169374bc9662dd',
+  clientSecret: '3660dfee2adc96f297d8d97f5f2ed669a2e0064b',
+  repo: '1522370.github.io',
+  owner: '1522370',
+  admin: '1522370',
+ //id 是为了保证issue的唯一性，id长度不能大于50，因此这里我们使用路径来当id，做一个截取，最好不要修改此配置项，否则可能导致评论丢失  
+  id: location.href.slice(location.href.length-25),
+  distractionFreeMode: 'true',
+  labels: 'Comment'.split(',').filter(l => l) ,
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+  </section>
+
+
+
+
 
 
 
@@ -453,7 +484,7 @@
     < !--id: "Hello World" -- >
     var gitment = new Gitment({
       id: "20221123142625",
-      owner: '1522370',
+      owner: 'falsa',
       repo: '1522370.github.io',
       oauth: {
         client_id: 'c1b2c0169374bc9662dd',
