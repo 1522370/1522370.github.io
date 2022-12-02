@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-12-02T15:51:22.166Z</updated>
+  <updated>2022-12-02T16:00:52.636Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2022/12/02/MySQL/"/>
     <id>http://example.com/2022/12/02/MySQL/</id>
     <published>2022-12-02T15:39:17.000Z</published>
-    <updated>2022-12-02T15:51:22.166Z</updated>
+    <updated>2022-12-02T16:00:52.636Z</updated>
     
     <content type="html"><![CDATA[<p>图片</p><p><img src="/2022/12/02/MySQL/image-20210528141814708.png"></p>]]></content>
     
@@ -35,6 +35,10 @@
     
     
     
+    <category term="MySQL" scheme="http://example.com/categories/MySQL/"/>
+    
+    
+    <category term="-mysql -索引" scheme="http://example.com/tags/mysql-%E7%B4%A2%E5%BC%95/"/>
     
   </entry>
   
