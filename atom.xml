@@ -112,9 +112,9 @@
     <category term="MySQL" scheme="http://example.com/categories/MySQL/"/>
     
     
-    <category term="Explain" scheme="http://example.com/tags/Explain/"/>
-    
     <category term="SQL优化" scheme="http://example.com/tags/SQL%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="Explain" scheme="http://example.com/tags/Explain/"/>
     
     <category term="索引失效" scheme="http://example.com/tags/%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88/"/>
     
@@ -148,8 +148,6 @@
     <category term="MySQL" scheme="http://example.com/categories/MySQL/"/>
     
     
-    <category term="SQL优化" scheme="http://example.com/tags/SQL%E4%BC%98%E5%8C%96/"/>
-    
     <category term="MySQL" scheme="http://example.com/tags/MySQL/"/>
     
     <category term="逻辑架构" scheme="http://example.com/tags/%E9%80%BB%E8%BE%91%E6%9E%B6%E6%9E%84/"/>
@@ -157,6 +155,8 @@
     <category term="存储引擎" scheme="http://example.com/tags/%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/"/>
     
     <category term="索引" scheme="http://example.com/tags/%E7%B4%A2%E5%BC%95/"/>
+    
+    <category term="SQL优化" scheme="http://example.com/tags/SQL%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
