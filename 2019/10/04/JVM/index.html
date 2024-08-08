@@ -13,47 +13,47 @@
   <meta name="description" content="jvm的内存结构 方法区 堆 栈 堆中对象的管理: 垃圾回收(垃圾定位的算法) 年代: 年轻代 老年代 垃圾回收期  1 JVM简介JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM">
-<meta property="og:url" content="http://example.com/2019/10/06/JVM/index.html">
+<meta property="og:url" content="http://example.com/2019/10/04/JVM/index.html">
 <meta property="og:site_name" content="LH Blog">
 <meta property="og:description" content="jvm的内存结构 方法区 堆 栈 堆中对象的管理: 垃圾回收(垃圾定位的算法) 年代: 年轻代 老年代 垃圾回收期  1 JVM简介JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085145741.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085159443.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085204903.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085211823.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085216937.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085228932.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085243892.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085248866.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085302179.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085307543.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085320420.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085331884.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085345388.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085352522.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085359394.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085756401.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085719151.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085812814.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085818633.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085827152.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525085849444.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090007128.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090309997.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090319796.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090501156.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090335720.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090507189.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090556320.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090817022.png">
-<meta property="og:image" content="http://example.com/2019/10/06/JVM/image-20210525090802243.png">
-<meta property="article:published_time" content="2019-10-06T10:17:40.000Z">
-<meta property="article:modified_time" content="2022-12-06T16:18:00.305Z">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085145741.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085159443.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085204903.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085211823.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085216937.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085228932.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085243892.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085248866.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085302179.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085307543.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085320420.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085331884.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085345388.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085352522.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085359394.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085756401.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085719151.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085812814.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085818633.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085827152.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525085849444.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090007128.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090309997.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090319796.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090501156.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090335720.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090507189.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090556320.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090817022.png">
+<meta property="og:image" content="http://example.com/2019/10/04/JVM/image-20210525090802243.png">
+<meta property="article:published_time" content="2019-10-04T13:16:00.000Z">
+<meta property="article:modified_time" content="2024-08-08T10:22:44.821Z">
 <meta property="article:author" content="香蕉BU娇">
 <meta property="article:tag" content="JVM虚拟机">
 <meta property="article:tag" content="垃圾回收器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2019/10/06/JVM/image-20210525085145741.png">
+<meta name="twitter:image" content="http://example.com/2019/10/04/JVM/image-20210525085145741.png">
   
     <link rel="alternative" href="/atom.xml" title="LH Blog" type="application/atom+xml">
   
@@ -251,8 +251,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2019/10/06/JVM/" class="archive-article-date">
-        <time datetime="2019-10-06T10:17:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-06</time>
+<a href="/2019/10/04/JVM/" class="archive-article-date">
+        <time datetime="2019-10-04T13:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-04</time>
 </a>
 
   
@@ -297,22 +297,22 @@
 <span id="more"></span>
 
 <h2 id="1-1-JVM的种类"><a href="#1-1-JVM的种类" class="headerlink" title="1.1  JVM的种类"></a>1.1  JVM的种类</h2><p>Sun公司的HotSpot 、BEA公司的JRockit 、IBM公司的J9 VM</p>
-<h2 id="1-2-JVM虚拟机内存结构图"><a href="#1-2-JVM虚拟机内存结构图" class="headerlink" title="1.2  JVM虚拟机内存结构图"></a>1.2  JVM虚拟机内存结构图</h2><p><img src="/2019/10/06/JVM/image-20210525085145741.png" alt="image-20210525085145741"></p>
-<h1 id="2-JVM概念"><a href="#2-JVM概念" class="headerlink" title="2  JVM概念"></a>2  JVM概念</h1><h2 id="2-1-类加载器"><a href="#2-1-类加载器" class="headerlink" title="2.1  类加载器"></a>2.1  类加载器</h2><p><img src="/2019/10/06/JVM/image-20210525085159443.png"></p>
-<p><img src="/2019/10/06/JVM/image-20210525085204903.png" alt="image-20210525085204903"></p>
+<h2 id="1-2-JVM虚拟机内存结构图"><a href="#1-2-JVM虚拟机内存结构图" class="headerlink" title="1.2  JVM虚拟机内存结构图"></a>1.2  JVM虚拟机内存结构图</h2><p><img src="/2019/10/04/JVM/image-20210525085145741.png" alt="image-20210525085145741"></p>
+<h1 id="2-JVM概念"><a href="#2-JVM概念" class="headerlink" title="2  JVM概念"></a>2  JVM概念</h1><h2 id="2-1-类加载器"><a href="#2-1-类加载器" class="headerlink" title="2.1  类加载器"></a>2.1  类加载器</h2><p><img src="/2019/10/04/JVM/image-20210525085159443.png"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085204903.png" alt="image-20210525085204903"></p>
 <p>从文件系统或者网络加载class信息，把该信息存放在一块称之为方法区的内存空间<br>双亲委派机制: 出问题不要找我，找我爸 一层一层往上找<br>双亲委派机制有4种类加载器为：</p>
 <ul>
 <li>自定义(UserClassLoader)-&gt;应用/系统(App/SystemClassLoader)-&gt;扩展类(ExtClassLoader)-&gt;启动(BootstrapClassLoader)类加载器。</li>
 </ul>
 <p>加载过程简述：</p>
 <p>- 当一个类加载某个类.class(需要编译即javac Xx.java&gt;&gt;Xx.class)的时候，不会直接去加载，而是自定义会委托应用/系统，应用/系统会委托扩展，扩展会委托启动类加载器尝试去加载，如果启动类加载器不加载这个，就交给扩展，扩展不行就应用/系统，一层层的下去，然后最终加载到这个.class类。</p>
-<p><img src="/2019/10/06/JVM/image-20210525085211823.png"></p>
-<p><img src="/2019/10/06/JVM/image-20210525085216937.png" alt="image-20210525085216937"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085211823.png"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085216937.png" alt="image-20210525085216937"></p>
 <p>​    </p>
 <p>沙箱安全机制: 保护程序安全 保护JAVA原生的JDK代码<br>双亲委派优点？<br>a.安全，可避免用户自己编写的类动态替换Java的核心类，如java.lang.String<br>b.避免全限定命名的类重复加载(使用了findLoadClass()判断当前类是否已加载)<br>题目：可不可以自己写个String类(也是自定义的String为何没加载到？) - 阿里<br>    不可以。因为在类加载中，会根据双亲委派机制去寻找当前java.lang.String是否已被加载。由于启动类加载器已在启动时候加载了所以不会再次加载，因此使用的String是已在java核心类库加载过的String，而不是新定义的String。</p>
 <h2 id="2-2-执行引擎"><a href="#2-2-执行引擎" class="headerlink" title="2.2  执行引擎"></a>2.2  执行引擎</h2><p>负责解释JVM内部命令，翻译给操作系统执行</p>
 <h2 id="2-3-本地方法接口"><a href="#2-3-本地方法接口" class="headerlink" title="2.3  本地方法接口"></a>2.3  本地方法接口</h2><p>Java开发中会碰到声明为 native的方法，如：public native int hashCode; 这是一个native方法。为什么存在native方法呢？Java不是完美的，Java的不足除了体现在运行速度上要比传统的C++慢许多之外，Java无法直接访问到操作系统底层（如系统硬件等)，为此Java使用native方法来扩展Java程序的功能</p>
-<p>​     <img src="/2019/10/06/JVM/image-20210525085228932.png" alt="image-20210525085228932"></p>
+<p>​     <img src="/2019/10/04/JVM/image-20210525085228932.png" alt="image-20210525085228932"></p>
 <h2 id="2-4-本地方法栈"><a href="#2-4-本地方法栈" class="headerlink" title="2.4  本地方法栈"></a>2.4  本地方法栈</h2><p>内存中的一块区域负责登记 native方法</p>
 <h2 id="2-5-PC寄存器"><a href="#2-5-PC寄存器" class="headerlink" title="2.5  PC寄存器"></a>2.5  PC寄存器</h2><p>是线程私有的,就是一个指针，指向方法区中的方法字节码，指向下一个方法所在的地址，不会被垃圾回收器回收，因为生命周期短</p>
 <h2 id="2-6-方法区"><a href="#2-6-方法区" class="headerlink" title="2.6  方法区"></a>2.6  方法区</h2><p>静态变量(类变量)+常量+类信息(.class 构造方法/接口定义)+运行时常量池存在方法区中<br>类加载器加载的类就放到方法区，该区归所有线程共享<br>实例变量存在堆内存中,和方法区无关</p>
@@ -322,8 +322,8 @@
 <p>栈帧中主要保存3 类数据：<br>本地变量(Local Variables):输入参数和输出参数以及方法内的变量；<br>栈操作(Operand Stack):记录出栈、入栈的操作；<br>栈帧数据(Frame Data):包括类文件、方法等等</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">show</span><span class="params">(<span class="type">int</span> a)</span></span><br><span class="line">    &#123;</span><br><span class="line">        a++;</span><br><span class="line">        <span class="keyword">if</span>(a&lt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">        a = show(a);</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(show(<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-8-栈-堆-方法区的交互关系"><a href="#2-8-栈-堆-方法区的交互关系" class="headerlink" title="2.8  栈+堆+方法区的交互关系"></a>2.8  栈+堆+方法区的交互关系</h2><p><img src="/2019/10/06/JVM/image-20210525085243892.png"></p>
-<p><img src="/2019/10/06/JVM/image-20210525085248866.png" alt="image-20210525085248866"></p>
+<h2 id="2-8-栈-堆-方法区的交互关系"><a href="#2-8-栈-堆-方法区的交互关系" class="headerlink" title="2.8  栈+堆+方法区的交互关系"></a>2.8  栈+堆+方法区的交互关系</h2><p><img src="/2019/10/04/JVM/image-20210525085243892.png"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085248866.png" alt="image-20210525085248866"></p>
 <h1 id="3-堆"><a href="#3-堆" class="headerlink" title="3  堆"></a>3  堆</h1><h2 id="3-1-新生代-E8-F1-T1"><a href="#3-1-新生代-E8-F1-T1" class="headerlink" title="3.1  新生代(E8 F1 T1)"></a>3.1  新生代(E8 F1 T1)</h2><p>新生代主要用来存放新生的对象。一般占据堆空间的1/3。在新生代中，保存着大量的刚刚创建的对象，但是大部分的对象都是朝生夕死，所以在新生代中会频繁的进行MinorGC，进行垃圾回收。新生代又细分为三个区：Eden区、SurvivorFrom、ServivorTo区，三个区的默认比例为：8：1：1。</p>
 <ul>
 <li><strong>Eden区：</strong>Java新创建的对象绝大部分会分配在Eden区（如果对象太大，则直接分配到老年代）。当Eden区内存不够的时候，就会触发MinorGC（新生代采用的是复制算法），对新生代进行一次垃圾回收。</li>
@@ -338,29 +338,29 @@
 <li>类及方法的信息等比较难确定其大小，因此对于永久代大小指定比较困难，大小容易出现永久代溢出，太大容易导致老年代溢出（堆内存不变，此消彼长）。</li>
 <li>永久代会为GC带来不必要的复杂度，并且回收效率偏低。</li>
 </ul>
-<p> <img src="/2019/10/06/JVM/image-20210525085302179.png" alt="image-20210525085302179"></p>
+<p> <img src="/2019/10/04/JVM/image-20210525085302179.png" alt="image-20210525085302179"></p>
 <p>分为3块 新生代 老年代 元空间(Java8之前)</p>
-<p> <img src="/2019/10/06/JVM/image-20210525085307543.png" alt="image-20210525085307543"></p>
+<p> <img src="/2019/10/04/JVM/image-20210525085307543.png" alt="image-20210525085307543"></p>
 <h1 id="4-通过程序理解JVM"><a href="#4-通过程序理解JVM" class="headerlink" title="4  通过程序理解JVM"></a>4  通过程序理解JVM</h1><h2 id="4-1-堆分配参数"><a href="#4-1-堆分配参数" class="headerlink" title="4.1  堆分配参数"></a>4.1  堆分配参数</h2><p>初始堆大小和最大堆大小可以设置为一样，可以减少GC回收次数 提升性能</p>
-<p> <img src="/2019/10/06/JVM/image-20210525085320420.png" alt="image-20210525085320420"></p>
+<p> <img src="/2019/10/04/JVM/image-20210525085320420.png" alt="image-20210525085320420"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test01</span> &#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      test02();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test02</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//-Xms8m -Xmx8m -XX:+PrintGCDetails</span></span><br><span class="line">      <span class="comment">//minor GC 和full GC触发</span></span><br><span class="line">      <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;www.atguigu.com&quot;</span>;</span><br><span class="line">      <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">         str += str + <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">88888888</span>) + <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">999999999</span>);</span><br><span class="line">         System.out.println(<span class="string">&quot;循环: &quot;</span> + i);</span><br><span class="line">         System.out.println(<span class="string">&quot;max memory:&quot;</span> + Runtime.getRuntime().maxMemory());</span><br><span class="line">         System.out.println(<span class="string">&quot;free memory:&quot;</span> + Runtime.getRuntime().freeMemory());</span><br><span class="line">         System.out.println(<span class="string">&quot;total memory:&quot;</span> + Runtime.getRuntime().totalMemory());</span><br><span class="line">         System.out.println(str.getBytes().length);</span><br><span class="line">         i++;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-2-堆分配参数"><a href="#4-2-堆分配参数" class="headerlink" title="4.2  堆分配参数"></a>4.2  堆分配参数</h2><p>-XX:NewRatio设置新生代和老年代的比例 -XX:SurvivorRatio 设置eden:from:to的比例</p>
-<p> <img src="/2019/10/06/JVM/image-20210525085331884.png" alt="image-20210525085331884"></p>
+<p> <img src="/2019/10/04/JVM/image-20210525085331884.png" alt="image-20210525085331884"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test02</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="comment">//第一次配置</span></span><br><span class="line">      <span class="comment">//-Xms20m -Xmx20m -Xmn1m -XX:SurvivorRatio=8 -XX:+PrintGCDetails -XX:+UseSerialGC</span></span><br><span class="line">      <span class="comment">//第二次配置</span></span><br><span class="line">      <span class="comment">//-Xms20m -Xmx20m -Xmn8m  -XX:+PrintGCDetails -XX:+UseSerialGC</span></span><br><span class="line">      <span class="comment">//第三次配置</span></span><br><span class="line">      <span class="comment">//-XX:NewRatio=老年代/新生代</span></span><br><span class="line">      <span class="comment">//-Xms21m -Xmx21m -XX:NewRatio=2 -XX:+PrintGCDetails -XX:+UseSerialGC</span></span><br><span class="line">      <span class="type">byte</span>[] b = <span class="literal">null</span>;</span><br><span class="line">      <span class="comment">//连续向系统申请10MB空间</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ; i &lt;<span class="number">10</span>; i ++)&#123;</span><br><span class="line">         b = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1</span>*<span class="number">1024</span>*<span class="number">1024</span>];</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-3-堆溢出处理"><a href="#4-3-堆溢出处理" class="headerlink" title="4.3  堆溢出处理"></a>4.3  堆溢出处理</h2><p><img src="/2019/10/06/JVM/image-20210525085345388.png" alt="image-20210525085345388"></p>
+<h2 id="4-3-堆溢出处理"><a href="#4-3-堆溢出处理" class="headerlink" title="4.3  堆溢出处理"></a>4.3  堆溢出处理</h2><p><img src="/2019/10/04/JVM/image-20210525085345388.png" alt="image-20210525085345388"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test03</span> &#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      test03();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test03</span><span class="params">()</span> &#123;</span><br><span class="line">      <span class="comment">//-Xms15m  -Xmx15m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=D:\test03.hprof</span></span><br><span class="line">      <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;www.atguigu.com&quot;</span>;</span><br><span class="line">      <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">         str += str + <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">88888888</span>) + <span class="keyword">new</span> <span class="title class_">Random</span>().nextInt(<span class="number">999999999</span>);</span><br><span class="line">         System.out.println(<span class="string">&quot;循环: &quot;</span> + i);</span><br><span class="line">         System.out.println(<span class="string">&quot;max memory:&quot;</span> + Runtime.getRuntime().maxMemory());</span><br><span class="line">         System.out.println(<span class="string">&quot;free memory:&quot;</span> + Runtime.getRuntime().freeMemory());</span><br><span class="line">         System.out.println(<span class="string">&quot;total memory:&quot;</span> + Runtime.getRuntime().totalMemory());</span><br><span class="line">         System.out.println(str.getBytes().length);</span><br><span class="line">         i++;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​     <img src="/2019/10/06/JVM/image-20210525085352522.png" alt="image-20210525085352522"></p>
-<p><img src="/2019/10/06/JVM/image-20210525085359394.png" alt="image-20210525085359394"></p>
+<p>​     <img src="/2019/10/04/JVM/image-20210525085352522.png" alt="image-20210525085352522"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085359394.png" alt="image-20210525085359394"></p>
 <h2 id="4-4-方法区（了解）"><a href="#4-4-方法区（了解）" class="headerlink" title="4.4  方法区（了解）"></a>4.4  方法区（了解）</h2><p>方法区溢出 OutOfMemoryError:PermGen space</p>
-<p><img src="/2019/10/06/JVM/image-20210525085756401.png" alt="image-20210525085756401"></p>
-<p><img src="/2019/10/06/JVM/image-20210525085719151.png" alt="image-20210525085719151"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085756401.png" alt="image-20210525085756401"></p>
+<p><img src="/2019/10/04/JVM/image-20210525085719151.png" alt="image-20210525085719151"></p>
 <h2 id="4-5-JVM详细配置（了解）"><a href="#4-5-JVM详细配置（了解）" class="headerlink" title="4.5  JVM详细配置（了解）"></a>4.5  JVM详细配置（了解）</h2><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html">http://www.cnblogs.com/redcreen/archive/2011/05/04/2037057.html</a></p>
-<h1 id="5-垃圾回收算法-新生代-老年代"><a href="#5-垃圾回收算法-新生代-老年代" class="headerlink" title="5  垃圾回收算法(新生代 老年代)"></a>5  垃圾回收算法(新生代 老年代)</h1><h2 id="5-1-可达性分析"><a href="#5-1-可达性分析" class="headerlink" title="5.1  可达性分析"></a>5.1  可达性分析</h2><p> <img src="/2019/10/06/JVM/image-20210525085812814.png" alt="image-20210525085812814"></p>
+<h1 id="5-垃圾回收算法-新生代-老年代"><a href="#5-垃圾回收算法-新生代-老年代" class="headerlink" title="5  垃圾回收算法(新生代 老年代)"></a>5  垃圾回收算法(新生代 老年代)</h1><h2 id="5-1-可达性分析"><a href="#5-1-可达性分析" class="headerlink" title="5.1  可达性分析"></a>5.1  可达性分析</h2><p> <img src="/2019/10/04/JVM/image-20210525085812814.png" alt="image-20210525085812814"></p>
 <p>从GC Roots的对象作为起始点，从这些节点出发所走过的路径称为引用链。当一个对象到 GC Roots 没有任何引用链相连的时候说明对象不可用，很显然object5相关的引用已经没用了。</p>
-<h2 id="5-2-引用计数算法"><a href="#5-2-引用计数算法" class="headerlink" title="5.2  引用计数算法"></a>5.2  引用计数算法</h2><p> <img src="/2019/10/06/JVM/image-20210525085818633.png" alt="image-20210525085818633"></p>
+<h2 id="5-2-引用计数算法"><a href="#5-2-引用计数算法" class="headerlink" title="5.2  引用计数算法"></a>5.2  引用计数算法</h2><p> <img src="/2019/10/04/JVM/image-20210525085818633.png" alt="image-20210525085818633"></p>
 <p>如果不下小心直接把 Obj1-reference 和 Obj2-reference 置 null。则在 Java 堆当中的两块内存依然保持着互相引用无法回收。<strong>无法解决循环引用的情况</strong></p>
 <h2 id="5-3-标记清除算法"><a href="#5-3-标记清除算法" class="headerlink" title="5.3  标记清除算法"></a>5.3  标记清除算法</h2><p>原理</p>
 <p>当堆中的有效内存空间(available memory)被耗尽的时候，就会停止整个程序(也被 称为stop the world)，然后进行两项工作，第一项则是标记，第二项则是清除。 </p>
@@ -370,13 +370,13 @@
 <p>遍历整个堆，把未标记的对象清除。 </p>
 <p> 缺点</p>
 <p>此算法需要暂停整个应用，会产生内存碎片</p>
-<h2 id="5-4-标记压缩算法"><a href="#5-4-标记压缩算法" class="headerlink" title="5.4  标记压缩算法"></a>5.4  标记压缩算法</h2><p> <img src="/2019/10/06/JVM/image-20210525085827152.png" alt="image-20210525085827152"></p>
+<h2 id="5-4-标记压缩算法"><a href="#5-4-标记压缩算法" class="headerlink" title="5.4  标记压缩算法"></a>5.4  标记压缩算法</h2><p> <img src="/2019/10/04/JVM/image-20210525085827152.png" alt="image-20210525085827152"></p>
 <p>老年代进行垃圾回收</p>
 <h2 id="5-5-复制算法"><a href="#5-5-复制算法" class="headerlink" title="5.5  复制算法"></a>5.5  复制算法</h2><p>原理</p>
 <p>对象产生的时候在eden区new，当eden空间用完时，程序又需要创建对象，这个时候触发JVM垃圾回收，不再被其他对象所引用的对象就会被销毁，然后将存活对象移动到from,下次再触发垃圾回收的时候eden+from作为主战场，存活对象移动到to区(这个时候to变为from) ，原先form变为to,**谁空谁为to,**有个交换的过程从from到to的过程每次复制一次对象年龄增长一岁，当年龄达到一定年龄(默认15岁)若养老区也满了，那么这个时候将产生MajorGC(FullGC)，进行养老区的内存清理。若养老区执行了Full GC之后发现依然无法进行对象的保存，就会产生OOM异常“OutOfMemoryError”</p>
 <p>交换</p>
 <p>经过这次GC后，Eden区和From区已经被清空。这个时候，“From”和“To”会交换他们的角色，也就是新的“To”就是上次GC前的“From”，新的“From”就是上次GC前的“To”。不管怎样，都会保证名为To的Survivor区域是空的，谁空谁为to</p>
-<p> <img src="/2019/10/06/JVM/image-20210525085849444.png" alt="image-20210525085849444"></p>
+<p> <img src="/2019/10/04/JVM/image-20210525085849444.png" alt="image-20210525085849444"></p>
 <p>因为Eden区对象一般存活率较低，一般的，使用两块10%的内存作为空闲和活动区间，而另外80%的内存，则是用来给新建对象分配内存的。一旦发生GC，将10%的from活动区间与另外80%中存活的eden对象转移到10%的to空闲区间，接下来，将之前90%的内存全部释放，以此类推。 </p>
 <p>缺点 </p>
 <p>1、它浪费了一半的内存 </p>
@@ -386,11 +386,11 @@
 <h2 id="6-1-并行和并发的区别"><a href="#6-1-并行和并发的区别" class="headerlink" title="6.1  并行和并发的区别"></a>6.1  并行和并发的区别</h2><p>并发(Concurrent)</p>
 <p>在操作系统中，是指一个时间段中有几个程序都处于已启动运行到运行完毕之间，且这几个程序都是在同一个处理机上运行。</p>
 <p>并发不是真正意义上的“同时进行”，只是CPU把一个时间段划分成几个时间片段(时间区间)，然后在这几个时间区间之间来回切换，由于CPU处理的速度非常快，只要时间间隔处理得当，即可让用户感觉是多个应用程序同时在进行。如：打游戏和听音乐两件事情在同一个时间段内都是在同一台电脑上完成了从开始到结束的动作。那么，就可以说听音乐和打游戏是并发的</p>
-<p>​     <img src="/2019/10/06/JVM/image-20210525090007128.png" alt="image-20210525090007128"></p>
+<p>​     <img src="/2019/10/04/JVM/image-20210525090007128.png" alt="image-20210525090007128"></p>
 <p>并行(Parallel)</p>
 <p>当系统有一个以上CPU时，当一个CPU执行一个进程时，另一个CPU可以执行另一个进程，两个进程互不抢占CPU资源，可以同时进行，这种方式我们称之为并行(Parallel)。</p>
 <p>其实决定并行的因素不是CPU的数量，而是CPU的核心数量，比如一个CPU多个核也可以并行</p>
-<p><img src="/2019/10/06/JVM/image-20210525090309997.png" alt="image-20210525090309997"></p>
+<p><img src="/2019/10/04/JVM/image-20210525090309997.png" alt="image-20210525090309997"></p>
 <p>总结         </p>
 <p>所以并发是在一段时间内宏观上多个程序同时运行，并行是在某一时刻，真正有多个程序在运行。</p>
 <p>并行和并发的区别：</p>
@@ -408,18 +408,18 @@
 <p>否则，看似同时发生的事情，其实都是并发执行的</p>
 <h2 id="6-2-Serial收集器"><a href="#6-2-Serial收集器" class="headerlink" title="6.2  Serial收集器"></a>6.2  Serial收集器</h2><p>Serial是<strong>单线程</strong>执行垃圾回收的。当需要执行垃圾回收时，程序会暂停一切手上的工作，然后单线程执行垃圾回收。</p>
 <h3 id="6-2-1-Serial"><a href="#6-2-1-Serial" class="headerlink" title="6.2.1 Serial"></a>6.2.1 Serial</h3><p>因为新生代的特点是对象存活率低，所以收集算法用的是复制算法，把新生代存活对象复制到老年代，复制的内容不多，性能较好。</p>
-<p><img src="/2019/10/06/JVM/image-20210525090319796.png" alt="image-20210525090319796"></p>
+<p><img src="/2019/10/04/JVM/image-20210525090319796.png" alt="image-20210525090319796"></p>
 <h3 id="6-2-2-Serial-Old"><a href="#6-2-2-Serial-Old" class="headerlink" title="6.2.2 Serial Old"></a>6.2.2 Serial Old</h3><p>Serial Old收集器老年代的收集器，与Serial一样是单线程，不同的是算法用的是标记压缩(Mark-Compact)</p>
-<p><img src="/2019/10/06/JVM/image-20210525090501156.png" alt="image-20210525090501156"></p>
+<p><img src="/2019/10/04/JVM/image-20210525090501156.png" alt="image-20210525090501156"></p>
 <p>因为老年代里面对象的存活率高，如果依旧是用复制算法，需要复制的内容较多，性能较差。并且在极端情况下，当存活为100%时，没有办法用复制算法。所以需要用标记压缩Mark-Compact，以有效地避免这些问题</p>
 <h2 id="6-3-Parallel收集器"><a href="#6-3-Parallel收集器" class="headerlink" title="6.3  Parallel收集器"></a>6.3  Parallel收集器</h2><h3 id="6-3-1-ParNew"><a href="#6-3-1-ParNew" class="headerlink" title="6.3.1 ParNew"></a>6.3.1 ParNew</h3><p>ParNew同样用于新生代，是Serial的多线程版本，并且在参数、算法(同样是复制算法)上也完全和Serial相同。</p>
 <p>Par是Parallel的缩写，但它的并行仅仅指的是收集多线程并行，并不是收集和原程序可以并行进行。ParNew也是需要暂停程序一切的工作，然后多线程执行垃圾回收。</p>
-<p>​     <img src="/2019/10/06/JVM/image-20210525090335720.png" alt="image-20210525090335720"></p>
+<p>​     <img src="/2019/10/04/JVM/image-20210525090335720.png" alt="image-20210525090335720"></p>
 <p>因为是多线程执行，所以在多CPU下，ParNew效果通常会比Serial好。但如果是单CPU则会因为线程的切换，性能反而更差</p>
 <h3 id="6-3-2-Parallel-Scavenge"><a href="#6-3-2-Parallel-Scavenge" class="headerlink" title="6.3.2 Parallel Scavenge"></a>6.3.2 Parallel Scavenge</h3><p>新生代的收集器，同样用的是复制算法，也是并行多线程收集。与ParNew最大的不同，它关注的是垃圾回收的吞吐量。</p>
 <p>这里的吞吐量指的是 总时间与垃圾回收时间的比例。这个比例越高，证明垃圾回收占整个程序运行的比例越小。</p>
 <h3 id="6-3-3-Parallel-Old"><a href="#6-3-3-Parallel-Old" class="headerlink" title="6.3.3 Parallel Old"></a>6.3.3 Parallel Old</h3><p>老年代的收集器，是Parallel Scavenge老年代的版本。其中的算法替换成Mark-Compact</p>
-<p>​     <img src="/2019/10/06/JVM/image-20210525090507189.png" alt="image-20210525090507189"></p>
+<p>​     <img src="/2019/10/04/JVM/image-20210525090507189.png" alt="image-20210525090507189"></p>
 <h2 id="6-7-CMS收集器"><a href="#6-7-CMS收集器" class="headerlink" title="6.7  CMS收集器"></a>6.7  CMS收集器</h2><p>CMS, Concurrent Mark Sweep同样是老年代的收集器。它关注的是垃圾回收最短的停顿时间(低停顿)，在老年代并不频繁GC的场景下，是比较适用的。命名中用的是concurrent，而不是parallel，说明这个收集器是有与工作执行并发的能力的。MS则说明算法用的是Mark Sweep算法,来看看具体地工作原理,CMS整个过程比之前的收集器要复杂,整个过程分为四步:<strong>初始标记(initial mark)</strong></p>
 <p>单线程执行，需要“Stop The World”，但仅仅把GC Roots的直接关联可达的对象给标  记一下，由于直接关联对象比较小，所以这里的速度非常快。</p>
 <p>并发标记(concurrent mark)</p>
@@ -428,7 +428,7 @@
 <p>在并发标记的过程中，由于可能还会产生新的垃圾，所以此时需要重新标记新产生的垃圾。此处执行并行标记，与用户线程不并发，所以依然是“Stop The World”，时间比   初始时间要长一点。</p>
 <p>并发清除(concurrent sweep)</p>
 <p>并发清除之前所标记的垃圾。其他用户线程仍可以工作，不需要停顿。</p>
-<p>​     <img src="/2019/10/06/JVM/image-20210525090556320.png" alt="image-20210525090556320"></p>
+<p>​     <img src="/2019/10/04/JVM/image-20210525090556320.png" alt="image-20210525090556320"></p>
 <p>由于最耗费时间的并发标记与并发清除阶段都不需要暂停工作，所以整体的回收是低停顿的。</p>
 <p>缺点</p>
 <p>Mark Sweep算法会导致内存碎片比较多</p>
@@ -449,8 +449,8 @@
 <h2 id="6-10-AliGC"><a href="#6-10-AliGC" class="headerlink" title="6.10 AliGC"></a>6.10 AliGC</h2><p><a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/277268">https://yq.aliyun.com/articles/277268</a></p>
 <p>AliGC是阿里巴巴JVM团队基于G1算法， 面向大堆(LargeHeap)应用场景</p>
 <p>指定场景下的对比</p>
-<p><img src="/2019/10/06/JVM/image-20210525090817022.png" alt="image-20210525090817022"></p>
-<p><img src="/2019/10/06/JVM/image-20210525090802243.png" alt="image-20210525090802243"></p>
+<p><img src="/2019/10/04/JVM/image-20210525090817022.png" alt="image-20210525090817022"></p>
+<p><img src="/2019/10/04/JVM/image-20210525090802243.png" alt="image-20210525090802243"></p>
 <p>​     </p>
 
     
@@ -498,7 +498,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://example.com/2019/10/06/JVM/" title="JVM" target="_blank">http://example.com/2019/10/06/JVM/</a>
+          <a href="http://example.com/2019/10/04/JVM/" title="JVM" target="_blank">http://example.com/2019/10/04/JVM/</a>
         </li>
         
         <li>
@@ -591,7 +591,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/10/06/JVM/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/10/04/JVM/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -682,7 +682,7 @@ gitalk.render('gitalk-container')
         <script>
     < !--id: "JVM" -- >
     var gitment = new Gitment({
-      id: "20191006181740",
+      id: "20191004211600",
       owner: 'falsa',
       repo: '1522370.github.io',
       oauth: {
