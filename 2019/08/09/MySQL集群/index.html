@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
+  <link rel="dns-prefetch" href="https://1522370.github.io">
   <title>MySQL集群 | LH Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,74 +13,74 @@
   <meta name="description" content="mysql的集群–高可用: 主从(搭建) 主主(搭建) 主从级联 主主级联 主从同步数据的原理: 异步复制 半同步复制 读写分离: 主(写) 从(读) 分片: 数据分开进行存储—&gt;水平 垂直(表 库) 分片的常用策略—mycat(练习+原理): id取模 hash取模 范围取模 枚举 一致性哈希(哈希环)—&gt;负载均衡策略  1 Mysql复制架构1.1 数据拓展 热备份：数据库在运行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL集群">
-<meta property="og:url" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/index.html">
+<meta property="og:url" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/index.html">
 <meta property="og:site_name" content="LH Blog">
 <meta property="og:description" content="mysql的集群–高可用: 主从(搭建) 主主(搭建) 主从级联 主主级联 主从同步数据的原理: 异步复制 半同步复制 读写分离: 主(写) 从(读) 分片: 数据分开进行存储—&gt;水平 垂直(表 库) 分片的常用策略—mycat(练习+原理): id取模 hash取模 范围取模 枚举 一致性哈希(哈希环)—&gt;负载均衡策略  1 Mysql复制架构1.1 数据拓展 热备份：数据库在运行">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200524232046530.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607104243205.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110056280.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110359218.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110453449.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110556762.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110722242.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110804268.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110842326.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111110116.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111131335.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111440773.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111459565.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111612466.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111628561.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111741609.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111805185.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200824144352020.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-04-13-1670311488870.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200824144623639.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-11-21-1670311519982.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607113019936.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607113156502.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607113730796.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607114023235.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607114621298.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115008800.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115025368.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115320148.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115718465.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115905128.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115930371.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200530012403644.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607143921793.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607143932355.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601225751946.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601230908495.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200530020827979.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607144828730.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607145055820.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607154056173.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607154142666.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607154237635.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601232224434.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200602001628392.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-47-50-1670311854784.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200602002017703.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-40-00-1670311893950.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601235540364.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-34-58-1670311995908.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200602235241816.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_13-56-48-1670314227209.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200603010530819.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210608092140619.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210608092208288.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200605191200321.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200613210301026.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614115947722.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614120302675.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614121047323.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614121729209.png">
-<meta property="og:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200612002109456.png">
-<meta property="og:image" content="http://example.com/2019/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/dell/day3/%E8%AF%BE%E4%BB%B6/image/image-20200621213109545.png">
-<meta property="og:image" content="http://example.com/2019/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/dell/day3/%E8%AF%BE%E4%BB%B6/image/image-20200621213153827.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200524232046530.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607104243205.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110056280.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110359218.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110453449.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110556762.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110722242.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110804268.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607110842326.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111110116.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111131335.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111440773.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111459565.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111612466.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111628561.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111741609.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607111805185.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200824144352020.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-04-13-1670311488870.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200824144623639.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-11-21-1670311519982.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607113019936.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607113156502.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607113730796.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607114023235.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607114621298.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115008800.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115025368.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115320148.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115718465.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115905128.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607115930371.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200530012403644.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607143921793.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607143932355.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601225751946.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601230908495.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200530020827979.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607144828730.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607145055820.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607154056173.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607154142666.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210607154237635.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601232224434.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200602001628392.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-47-50-1670311854784.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200602002017703.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-40-00-1670311893950.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200601235540364.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_11-34-58-1670311995908.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200602235241816.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/Snipaste_2022-12-05_13-56-48-1670314227209.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200603010530819.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210608092140619.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20210608092208288.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200605191200321.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200613210301026.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614115947722.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614120302675.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614121047323.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200614121729209.png">
+<meta property="og:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200612002109456.png">
+<meta property="og:image" content="https://1522370.github.io/2019/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/dell/day3/%E8%AF%BE%E4%BB%B6/image/image-20200621213109545.png">
+<meta property="og:image" content="https://1522370.github.io/2019/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/dell/day3/%E8%AF%BE%E4%BB%B6/image/image-20200621213153827.png">
 <meta property="article:published_time" content="2019-08-09T06:55:51.000Z">
 <meta property="article:modified_time" content="2022-12-06T16:15:18.888Z">
 <meta property="article:author" content="香蕉BU娇">
@@ -89,7 +89,7 @@
 <meta property="article:tag" content="数据分片">
 <meta property="article:tag" content="Mycat工具">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200524232046530.png">
+<meta name="twitter:image" content="https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/image-20200524232046530.png">
   
     <link rel="alternative" href="/atom.xml" title="LH Blog" type="application/atom+xml">
   
@@ -148,7 +148,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="https://pic.dmjnb.com/pic/a3940bef26587b0619c58c005e3cb659?imageMogr2/thumbnail/x380/quality/90!" class="js-avatar">
+			<img src="https://img1.baidu.com/it/u=4154831926,315194463&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="js-avatar">
 		</a>
 		<hgroup>
 			<h1 class="header-author"><a href="/">香蕉BU娇</a></h1>
@@ -220,7 +220,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 				<a href="/">
-					<img src="https://pic.dmjnb.com/pic/a3940bef26587b0619c58c005e3cb659?imageMogr2/thumbnail/x380/quality/90!" class="js-avatar">
+					<img src="https://img1.baidu.com/it/u=4154831926,315194463&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="js-avatar">
 				</a>
 			</div>
 			<hgroup>
@@ -1130,7 +1130,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="http://example.com/2019/08/09/MySQL集群/" title="MySQL集群" target="_blank">http://example.com/2019/08/09/MySQL集群/</a>
+          <a href="https://1522370.github.io/2019/08/09/MySQL集群/" title="MySQL集群" target="_blank">https://1522370.github.io/2019/08/09/MySQL集群/</a>
         </li>
         
         <li>
@@ -1231,7 +1231,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://1522370.github.io/2019/08/09/MySQL%E9%9B%86%E7%BE%A4/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -1355,7 +1355,7 @@ gitalk.render('gitalk-container')
 			<div class="footer-left">
 				&copy; 
 					2018-
-							2024 <a href="http://example.com/" target="_blank">
+							2024 <a href="https://1522370.github.io/" target="_blank">
 									香蕉BU娇
 								</a>
 			</div>
@@ -1547,6 +1547,14 @@ gitalk.render('gitalk-container')
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">View视图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Vagrant Centos/7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">VirtualBox虚拟机</a>
               </li>
             
             <div class="clearfix"></div>
